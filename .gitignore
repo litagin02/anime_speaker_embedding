@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Weights
-.pth
+*.pth
