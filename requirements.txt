@@ -1,0 +1,5 @@
+huggingface_hub
+librosa
+numpy
+speechbrain>=1.0.0
+torch

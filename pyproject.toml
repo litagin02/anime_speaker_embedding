@@ -1,0 +1,29 @@
+[project]
+name = "anime_speaker_embedding"
+version = "0.1.0"
+description = "Speaker embedding for anime speech domain based on ECAPA_TDNN"
+readme = "README.md"
+authors = [{ name = "litagin02", email = "litagin02@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = [
+    "huggingface-hub",
+    "librosa",
+    "numpy",
+    "speechbrain>=1.0.0",
+    "torch",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+sources = ["src"]
+
+exclude = ["/assets/**", "*.ipynb"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anime_speaker_embedding"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/assets/**", "*.ipynb"]
