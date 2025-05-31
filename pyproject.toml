@@ -1,6 +1,6 @@
 [project]
 name = "anime_speaker_embedding"
-version = "0.1.0"
+version = "0.1.1"
 description = "Speaker embedding for anime speech domain based on ECAPA_TDNN"
 readme = "README.md"
 authors = [{ name = "litagin02", email = "litagin02@gmail.com" }]
@@ -12,7 +12,26 @@ dependencies = [
     "speechbrain>=1.0.0",
     "torch",
 ]
-license = { file = "LICENSE"}
+license = { file = "LICENSE" }
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio :: Analysis",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/litagin02/anime_speaker_embedding"
+Source   = "https://github.com/litagin02/anime_speaker_embedding"
+Tracker  = "https://github.com/litagin02/anime_speaker_embedding/issues"
 
 [build-system]
 requires = ["hatchling"]
@@ -24,7 +43,4 @@ sources = ["src"]
 exclude = ["/assets/**", "*.ipynb"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/anime_speaker_embedding"]
-
-[tool.hatch.build.targets.sdist]
-exclude = ["/assets/**", "*.ipynb"]
+packages = ["anime_speaker_embedding"]
