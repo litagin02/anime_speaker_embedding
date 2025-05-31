@@ -12,6 +12,7 @@ dependencies = [
     "speechbrain>=1.0.0",
     "torch",
 ]
+license = { file = "LICENSE"}
 
 [build-system]
 requires = ["hatchling"]
