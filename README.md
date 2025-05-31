@@ -12,7 +12,7 @@
 
 ## Note
 
-- This model try to eagerly distinguish speakers, and the values of the cosine similarity between two embeddings of the same speaker are usually lower than other embedding models
+- This model tries to eagerly distinguish speakers, and the values of the cosine similarity between two embeddings of the same speaker are usually lower than other embedding models
 
 ## Installation
 
