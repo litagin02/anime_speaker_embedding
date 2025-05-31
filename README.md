@@ -10,6 +10,10 @@
 - Well-suited for **Japanese anime-like** voices, including **non-verbal vocalizations** or **acted voices**
 - Also this model works well for *NSFW erotic utterances and vocalizations* such as aegi (喘ぎ) and chupa-sound (チュパ音) which are important culture in Japanese Visual Novel games, while other usual speaker embedding models cannot distinguish such voices of different speakers at all!
 
+## Note
+
+- This model try to eagerly distinguish speakers, and the values of the cosine similarity between two embeddings of the same speaker are usually lower than other embedding models
+
 ## Installation
 
 ```bash
