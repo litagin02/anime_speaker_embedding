@@ -16,10 +16,10 @@ The t-SNE plot of embeddings from some Galgames (not included in the training se
 
 | model | Game1 | Game2 | Game3 | Game4 |
 | --- | --- | --- | --- | --- |
-| [speechbrain/spkrec-ecapa-voxceleb](https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb) | ![game1](assets/vanilla_1.webp) | ![game2](assets/vanilla_2.webp) | ![game3](assets/vanilla_3.webp) | ![game4](assets/vanilla_4.webp) |
-| [pyannote/wespeaker-voxceleb-resnet34-LM](https://huggingface.co/pyannote/wespeaker-voxceleb-resnet34-LM) | ![game1](assets/resnet34_1.webp) | ![game2](assets/resnet34_2.webp) | ![game3](assets/resnet34_3.webp) | ![game4](assets/resnet34_4.webp) |
-| [Resemblyzer](https://github.com/resemble-ai/Resemblyzer) | ![game1](assets/resemblyzer_1.webp) | ![game2](assets/resemblyzer_2.webp) | ![game3](assets/resemblyzer_3.webp) | ![game4](assets/resemblyzer_4.webp) |
-| [**this model**](https://huggingface.co/litagin/anime_speaker_embedding) | ![game1](assets/anime_1.webp) | ![game2](assets/anime_2.webp) | ![game3](assets/anime_3.webp) | ![game4](assets/anime_4.webp) |
+| [speechbrain/spkrec-ecapa-voxceleb](https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb) | ![game1](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/vanilla_1.jpg) | ![game2](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/vanilla_2.jpg) | ![game3](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/vanilla_3.jpg) | ![game4](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/vanilla_4.jpg) |
+| [pyannote/wespeaker-voxceleb-resnet34-LM](https://huggingface.co/pyannote/wespeaker-voxceleb-resnet34-LM) | ![game1](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resnet34_1.jpg) | ![game2](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resnet34_2.jpg) | ![game3](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resnet34_3.jpg) | ![game4](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resnet34_4.jpg) |
+| [Resemblyzer](https://github.com/resemble-ai/Resemblyzer) | ![game1](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resemblyzer_1.jpg) | ![game2](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resemblyzer_2.jpg) | ![game3](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resemblyzer_3.jpg) | ![game4](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/resemblyzer_4.jpg) |
+| [**this model**](https://huggingface.co/litagin/anime_speaker_embedding) | ![game1](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/anime_1.jpg) | ![game2](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/anime_2.jpg) | ![game3](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/anime_3.jpg) | ![game4](https://raw.githubusercontent.com/litagin02/anime_speaker_embedding/refs/heads/main/assets/anime_4.jpg) |
 
 ## Installation
 
@@ -43,7 +43,7 @@ embedding = model.get_embedding(audio_path)
 print(embedding.shape)  # np.array with shape (192,)
 ```
 
-See [assets/example.ipynb](assets/example.ipynb) for some usage and visualization examples.
+See [example.ipynb](example.ipynb) for some usage and visualization examples.
 
 ## Model Details
 
