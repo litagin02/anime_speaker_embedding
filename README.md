@@ -2,7 +2,7 @@
 
 ## Overview
 
-- ECAPA-TDNN model (from [SpeechBrain](https://github.com/speechbrain/speechbrain)) trained on [OOPPEENN/VisualNovel_Dataset](https://huggingface.co/datasets/OOPPEENN/VisualNovel_Dataset) (a.k.a. Galgame_Dataset)
+- ECAPA-TDNN model (from [SpeechBrain](https://github.com/speechbrain/speechbrain)) trained on [OOPPEENN/56697375616C4E6F76656C5F44617461736574](https://huggingface.co/datasets/OOPPEENN/56697375616C4E6F76656C5F44617461736574)
 - This model is designed for speaker embedding tasks in anime and visual novel contexts.
 
 ## Features
