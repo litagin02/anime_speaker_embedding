@@ -14,7 +14,7 @@ Speaker embedding model for suitable for anime domain.
 ## 特長
 
 - 日本語アニメ調の演技音声や非言語発話に特化
-- 他の通常の話者埋め込みモデルではまったく区別できない、NSFWな性的発声（喘ぎ・チュパ音など）を含むビジュアルノベル文化の音声にも対応
+- 他の通常の話者埋め込みモデルではまったく区別できない、日本のノベルゲーの文化の中で非常に重要なNSFWな性的発声（喘ぎ・チュパ音など）にも対応
 
 ## モデルバリアント
 
@@ -25,7 +25,7 @@ Speaker embedding model for suitable for anime domain.
 
 ## 注意
 
-- 話者を積極的に区別しにいく性質のため、同一話者の埋め込み間のコサイン類似度は他モデルより低めです
+- 話者を積極的に区別しようとする性質のため、同一話者の埋め込み間のコサイン類似度は他モデルより低めです
 
 ## インストール
 
@@ -90,10 +90,11 @@ print(embedding.shape)  # (192,) の np.ndarray
 
 #### `char`バリアント
 
-- speechbrain/spkrec-ecapa-voxcelebをベースモデルとして使用
-  - その後BNをすべてGNに置換
+- [speechbrain/spkrec-ecapa-voxceleb](https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb)をベースモデルとして使用
+  - その後BatchNormをすべてGroupNormに置換
   - fbank前に `x = x * 32768.0` のスケーリングを追加（ChatGPTがそういうコード出してきたので……。あとからこのスケーリングは互換性上よくないことに気づいたけど手遅れでした）
-- 上位100または1000キャラクターのサブセットで事前学習
+  - いろいろ変えてるので、実際はファインチューニングではなくスクラッチからの学習に近いと思います
+- ファイル数が多い上位100、1000キャラクターのサブセットで事前学習
 - フルデータセットで学習
 - オンラインデータ拡張（リバーブ、バックグラウンドノイズ、各種フィルタ等）を加えて再学習
 - 同一シリーズ・同一キャラクター名で混同行列が高いキャラクター（同じゲームシリーズの同一キャラ相当）をいくつかマージして学習
@@ -151,7 +152,7 @@ embedding = model.get_embedding(audio_path)
 print(embedding.shape)  # np.ndarray with shape (192,)
 ```
 
-See example.ipynb for usage and visualization examples.
+See [example.ipynb](example.ipynb) for usage and visualization examples.
 
 ## Comparison with other models
 
@@ -194,7 +195,9 @@ Using [litagin/VisualNovel_Dataset_Metadata](https://huggingface.co/datasets/lit
 
 #### `char` variant
 
-- Base: speechbrain/spkrec-ecapa-voxceleb; replaced BN→GN; added `x = x * 32768.0` before fbank
+- Base: [speechbrain/spkrec-ecapa-voxceleb](https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb); replaced BN→GN; added `x = x * 32768.0` before fbank
+    - ChatGPT suggested this scaling, but it turned out to be incompatible later.
+    - I guess the model is rather trained from scratch, not fine-tuned actually.
 - Pretrained on top-100/1000 speakers subset
 - Trained on full dataset
 - Retrained with online augmentations (reverb, noise, filters)
