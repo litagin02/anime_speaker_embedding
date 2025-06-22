@@ -12,16 +12,25 @@ from huggingface_hub import hf_hub_download
 from speechbrain.lobes.features import Fbank
 from speechbrain.lobes.models.ECAPA_TDNN import ECAPA_TDNN
 
-REPO_ID = "litagin/anime_speaker_embedding_ecapa_tdnn_groupnorm"
+REPO_ID_DICT = {
+    "char": "litagin/anime_speaker_embedding_ecapa_tdnn_groupnorm",
+    "va": "litagin/anime_speaker_embedding_by_va_ecapa_tdnn_groupnorm",
+}
 FILE_NAME = "embedding_model.pth"
 REVISION = "main"
 
 
-def _get_ckpt(ckpt_path: Union[str, Path, None]) -> Path:
+def _get_ckpt(ckpt_path: Union[str, Path, None], variant: Union[str, None]) -> Path:
     """Resolve local checkpoint path; downloads from HF Hub if needed."""
     if ckpt_path is None:
+        if variant is None:
+            variant = "char"
+        if variant not in REPO_ID_DICT:
+            raise ValueError(
+                f"Unknown variant '{variant}'. Available variants: {list(REPO_ID_DICT.keys())}"
+            )
         ckpt_path = hf_hub_download(
-            repo_id=REPO_ID, filename=FILE_NAME, revision=REVISION
+            repo_id=REPO_ID_DICT[variant], filename=FILE_NAME, revision=REVISION
         )
     return Path(ckpt_path)
 
@@ -46,6 +55,7 @@ def swap_bn_to_gn(model: nn.Module, num_groups: int = 32) -> None:
 class AnimeSpeakerEmbedding(nn.Module):
     def __init__(
         self,
+        variant: Union[str, None] = None,
         *,
         n_mels: int = 80,
         lin_neurons: int = 192,
@@ -53,8 +63,8 @@ class AnimeSpeakerEmbedding(nn.Module):
         kernel_sizes: list[int] = [5, 3, 3, 3, 1],
         num_groups: int = 32,
         sr: int = 16_000,
-        ckpt_path: str | Path | None = None,
-        device: str | None = None,
+        ckpt_path: Union[str, Path | None] = None,
+        device: Union[str, None] = None,
     ) -> None:
         super().__init__()
         self.backbone = ECAPA_TDNN(
@@ -66,7 +76,7 @@ class AnimeSpeakerEmbedding(nn.Module):
         swap_bn_to_gn(self.backbone, num_groups=num_groups)
         self.fbank = Fbank(sample_rate=sr, n_mels=n_mels)
 
-        ckpt_path = _get_ckpt(ckpt_path)
+        ckpt_path = _get_ckpt(ckpt_path, variant=variant)
         print(f"Loading checkpoint from {ckpt_path}")
         state = torch.load(ckpt_path, map_location="cpu")
         self.load_state_dict(state, strict=False)

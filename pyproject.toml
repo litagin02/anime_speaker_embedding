@@ -1,6 +1,6 @@
 [project]
 name = "anime_speaker_embedding"
-version = "0.1.1"
+version = "0.2.1"
 description = "Speaker embedding for anime speech domain based on ECAPA_TDNN"
 readme = "README.md"
 authors = [{ name = "litagin02", email = "litagin02@gmail.com" }]
